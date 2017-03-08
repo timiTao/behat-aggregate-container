@@ -60,9 +60,6 @@ class Extension implements ExtensionInterface
 
     public function load(ContainerBuilder $container, array $config)
     {
-        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../ResourceConfig'));
-        $loader->load('services.yml');
-
         $container->setParameter(Extension::EXTENSION_NAME . '.config', $config);
     }
 }
