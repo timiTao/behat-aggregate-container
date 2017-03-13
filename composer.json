@@ -12,7 +12,7 @@
   ],
   "authors": [
     {
-      "name": "Tomasz Kunicki",
+      "name": "Tomasz Kunicki"
     }
   ],
   "require": {
@@ -21,7 +21,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Timitao\\BehatAggregateContainer": "src/"
+      "Timitao\\BehatAggregateContainer\\": "src/"
     }
   }
 }
