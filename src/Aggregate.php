@@ -6,6 +6,7 @@ namespace Timitao\BehatAggregateContainer;
 
 
 use Interop\Container\ContainerInterface;
+use Timitao\BehatAggregateContainer\Exception\BehatAggregateContainerException;
 
 class Aggregate extends \ArrayObject implements ContainerInterface
 {
@@ -14,9 +15,11 @@ class Aggregate extends \ArrayObject implements ContainerInterface
         $this->append($container);
     }
 
+    /**
+     * @throws BehatAggregateContainerException
+     */
     public function get($id)
     {
-        $result = false;
         /** @var ContainerInterface $item */
         foreach ($this as $item) {
             if ($item->has($id)) {
@@ -24,7 +27,7 @@ class Aggregate extends \ArrayObject implements ContainerInterface
             }
         }
 
-        throw new \Exception(sprintf("Didn't find service '%s' in any container", $id));
+        throw new BehatAggregateContainerException(sprintf("Didn't find service '%s' in any container", $id));
     }
 
     public function has($id)
