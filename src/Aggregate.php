@@ -16,6 +16,8 @@ class Aggregate extends \ArrayObject implements ContainerInterface
     }
 
     /**
+     * @param string $id
+     * @return mixed
      * @throws BehatAggregateContainerException
      */
     public function get($id)
@@ -30,6 +32,10 @@ class Aggregate extends \ArrayObject implements ContainerInterface
         throw new BehatAggregateContainerException(sprintf("Didn't find service '%s' in any container", $id));
     }
 
+    /**
+     * @param string $id
+     * @return bool
+     */
     public function has($id)
     {
         $result = false;
