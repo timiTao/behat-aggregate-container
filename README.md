@@ -1,9 +1,7 @@
-# In development
-
 # Behat Aggregate extension
 
-Starting from [Behat 3.3](https://github.com/Behat/Behat/pull/974), is available to hold container implementing [Interop\Container\ContainerInterface](https://github.com/container-interop/container-interop).
-This library is to aggregate few containers in one interface.
+Starting from [Behat 3.3](https://github.com/Behat/Behat/pull/974), is available to hold container implementing [Psr\Container\ContainerInterface](https://github.com/container-interop/container-interop).
+This library is to aggregate of containers implementing `Psr\Container\ContainerInterface`.
 
 # Configuration
 

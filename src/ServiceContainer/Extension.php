@@ -2,6 +2,7 @@
 /**
  * Copyright
  */
+
 namespace Timitao\BehatAggregateContainer\ServiceContainer;
 
 use Behat\Testwork\ServiceContainer\Extension as ExtensionInterface;
@@ -13,6 +14,9 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class Extension implements ExtensionInterface
 {
 
+    /**
+     * Prefix of extension
+     */
     const EXTENSION_NAME = 'aggregate_container_extension';
 
     /**
@@ -25,14 +29,22 @@ class Extension implements ExtensionInterface
      */
     const EXTENSION_NAME_TAG = 'aggregate_container_extension.aggregate_tag';
 
-    /** @var ServiceProcessor */
+    /**
+     * @var ServiceProcessor
+     */
     private $processor;
 
+    /**
+     * @param ServiceProcessor|null $processor
+     */
     public function __construct(ServiceProcessor $processor = null)
     {
         $this->processor = $processor ?: new ServiceProcessor();
     }
 
+    /**
+     * @param ContainerBuilder $container
+     */
     public function process(ContainerBuilder $container)
     {
         $references = $this->processor->findAndSortTaggedServices($container, self::EXTENSION_NAME_TAG);
@@ -43,21 +55,32 @@ class Extension implements ExtensionInterface
         }
     }
 
+    /**
+     * @return string
+     */
     public function getConfigKey()
     {
         return self::EXTENSION_NAME;
     }
 
+    /**
+     * @param ExtensionManager $extensionManager
+     */
     public function initialize(ExtensionManager $extensionManager)
     {
-
     }
 
+    /**
+     * @param ArrayNodeDefinition $builder
+     */
     public function configure(ArrayNodeDefinition $builder)
     {
-
     }
 
+    /**
+     * @param ContainerBuilder $container
+     * @param array $config
+     */
     public function load(ContainerBuilder $container, array $config)
     {
         $container->setParameter(Extension::EXTENSION_NAME . '.config', $config);
